@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 my $build = Module::Build->new(
-    module_name => 'Text-Flow',
+    module_name => 'Text::Flow',
     license => 'perl',
     requires => {
          'Moose' => '0.21'
