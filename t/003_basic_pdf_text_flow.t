@@ -3,12 +3,16 @@
 use strict;
 use warnings;
 
-use Test::More no_plan => 1;
-use Test::PDF;
+use Test::More;
+
+BEGIN {
+    eval "use Test::PDF; use t::lib::PDFGen;";
+    plan skip_all => "Test::PDF and pdflib_pl required to run PDF tests" if $@;    
+}
+
+plan no_plan => 1;
 
 use List::Util 'sum';
-
-use t::lib::PDFGen;
 
 BEGIN {
     use_ok('Text::Flow');
