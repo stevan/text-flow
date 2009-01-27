@@ -159,7 +159,7 @@ we will have to wait until 0.02 for that.
 =head1 SIMILAR MODULES
 
 There are a bunch of other text wrapping and flowing modules out there, but 
-they are all meant for use in ASCII outout only. This just didn't work for 
+they are all meant for use in ASCII output only. This just didn't work for
 my needs, so I wrote this one. If you need to wrap ASCII text and want to 
 do it in a much simpler manner then this module provides, then I suggest
 checking out those modules. This module is specifically made for when those 
