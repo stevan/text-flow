@@ -7,7 +7,8 @@ my $build = Module::Build->new(
     module_name => 'Text::Flow',
     license => 'perl',
     requires => {
-         'Moose' => '0.21'
+         'Moo' => '0',
+         'MooX::Types::MooseLike' => '0',
     },
     optional => {
         'Test::PDF' => '0.01',

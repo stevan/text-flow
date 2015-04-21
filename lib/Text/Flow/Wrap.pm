@@ -1,22 +1,23 @@
 
 package Text::Flow::Wrap;
-use Moose;
+use Moo;
+use MooX::Types::MooseLike::Base ':all';
 
 our $VERSION   = '0.01';
 our $AUTHORITY = 'cpan:STEVAN';
 
 has 'check_width' => (
     is       => 'rw',
-    isa      => 'CodeRef',
+    isa      => CodeRef,
     required => 1,
 );
 
-has 'word_boundry'      => (is => 'rw', isa => 'Str', default => " ");
-has 'paragraph_boundry' => (is => 'rw', isa => 'Str', default => "\n");
+has 'word_boundry'      => (is => 'rw', isa => Str, default => " ");
+has 'paragraph_boundry' => (is => 'rw', isa => Str, default => "\n");
 
-has 'word_break'        => (is => 'rw', isa => 'Str', default => " ");
-has 'line_break'        => (is => 'rw', isa => 'Str', default => "\n");
-has 'paragraph_break'   => (is => 'rw', isa => 'Str', default => "\n\n");
+has 'word_break'        => (is => 'rw', isa => Str, default => " ");
+has 'line_break'        => (is => 'rw', isa => Str, default => "\n");
+has 'paragraph_break'   => (is => 'rw', isa => Str, default => "\n\n");
 
 sub wrap {
     my ($self, $text) = @_;
