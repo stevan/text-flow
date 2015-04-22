@@ -1,6 +1,8 @@
 
 package Text::Flow;
-use Moose;
+use Moo;
+use MooX::Types::MooseLike::Base ':all';
+use Scalar::Util 'blessed';
 
 use Text::Flow::Wrap;
 
@@ -9,13 +11,16 @@ our $AUTHORITY = 'cpan:STEVAN';
 
 has 'check_height' => (
     is       => 'rw',
-    isa      => 'CodeRef',
+    isa      => CodeRef,
     required => 1,
 );
 
 has 'wrapper' => (
     is       => 'rw',
-    isa      => 'Text::Flow::Wrap',
+    isa      => sub { 
+			blessed $_[0] and $_[0]->isa('Text::Flow::Wrap') 
+				or die "wrapper must be a Text::Flow::Wrap";
+		},
     required => 1,
 );
 
@@ -44,8 +49,6 @@ sub flow {
         $self->wrapper->reassemble_paragraphs($_);
     } @sections;
 }
-
-no Moose;
 
 1;
 
@@ -141,16 +144,6 @@ and line breaks for you.
 
 =back
 
-=head2 Introspection
-
-=over 4 
-
-=item B<meta>
-
-Returns the Moose meta object associated with this class.
-
-=back
-
 =head1 TODO
 
 I wanted to write some tests for using this with GD modules as well. I suppose 
@@ -159,7 +152,7 @@ we will have to wait until 0.02 for that.
 =head1 SIMILAR MODULES
 
 There are a bunch of other text wrapping and flowing modules out there, but 
-they are all meant for use in ASCII output only. This just didn't work for
+they are all meant for use in ASCII outout only. This just didn't work for 
 my needs, so I wrote this one. If you need to wrap ASCII text and want to 
 do it in a much simpler manner then this module provides, then I suggest
 checking out those modules. This module is specifically made for when those 

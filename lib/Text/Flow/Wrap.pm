@@ -1,22 +1,23 @@
 
 package Text::Flow::Wrap;
-use Moose;
+use Moo;
+use MooX::Types::MooseLike::Base ':all';
 
 our $VERSION   = '0.01';
 our $AUTHORITY = 'cpan:STEVAN';
 
 has 'check_width' => (
     is       => 'rw',
-    isa      => 'CodeRef',
+    isa      => CodeRef,
     required => 1,
 );
 
-has 'word_boundry'      => (is => 'rw', isa => 'Str', default => " ");
-has 'paragraph_boundry' => (is => 'rw', isa => 'Str', default => "\n");
+has 'word_boundry'      => (is => 'rw', isa => Str, default => " ");
+has 'paragraph_boundry' => (is => 'rw', isa => Str, default => "\n");
 
-has 'word_break'        => (is => 'rw', isa => 'Str', default => " ");
-has 'line_break'        => (is => 'rw', isa => 'Str', default => "\n");
-has 'paragraph_break'   => (is => 'rw', isa => 'Str', default => "\n\n");
+has 'word_break'        => (is => 'rw', isa => Str, default => " ");
+has 'line_break'        => (is => 'rw', isa => Str, default => "\n");
+has 'paragraph_break'   => (is => 'rw', isa => Str, default => "\n\n");
 
 sub wrap {
     my ($self, $text) = @_;
@@ -76,8 +77,6 @@ sub disassemble_paragraph {
     
     return \@output;    
 }
-
-no Moose;
 
 1;
 
@@ -197,16 +196,6 @@ might need to access them as well (see Text::Flow)
 =item B<reassemble_paragraph>
 
 =item B<reassemble_paragraphs>
-
-=back
-
-=head2 Introspection
-
-=over 4 
-
-=item B<meta>
-
-Returns the Moose meta object associated with this class.
 
 =back
 
