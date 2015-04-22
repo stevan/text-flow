@@ -78,8 +78,6 @@ sub disassemble_paragraph {
     return \@output;    
 }
 
-no Moose;
-
 1;
 
 __END__
@@ -198,16 +196,6 @@ might need to access them as well (see Text::Flow)
 =item B<reassemble_paragraph>
 
 =item B<reassemble_paragraphs>
-
-=back
-
-=head2 Introspection
-
-=over 4 
-
-=item B<meta>
-
-Returns the Moose meta object associated with this class.
 
 =back
 

@@ -50,8 +50,6 @@ sub flow {
     } @sections;
 }
 
-no Moose;
-
 1;
 
 __END__
@@ -143,16 +141,6 @@ still okay, and false if the max height has been reached.
 This method preforms the text flowing. It returns an array of strings which 
 can be treated as complete blocks of text. It will handle paragraph breaks
 and line breaks for you.
-
-=back
-
-=head2 Introspection
-
-=over 4 
-
-=item B<meta>
-
-Returns the Moose meta object associated with this class.
 
 =back
 
